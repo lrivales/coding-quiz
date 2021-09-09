@@ -50,7 +50,7 @@ header p {
     width: 95%;
   }
 
-  .btn {
+  .btn, .answerBtn {
     outline: none;
     border: none;
     display: inline-block;
