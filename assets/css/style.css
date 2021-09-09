@@ -62,4 +62,5 @@ header p {
     top: -3px;
     box-shadow: 0 3px var(--grey);
     width: 100%;
+    margin: 10px;
   }
