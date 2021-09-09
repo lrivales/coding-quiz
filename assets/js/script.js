@@ -1,5 +1,5 @@
 var btnEl = document.querySelector(".btn");
-var answerBtnEl = document.querySelector(".btn[id='answerBtn'");
+var answerBtnEl = document.querySelector(".btn[id='answerBtn']");
 
 var myQuestions = [
     {
@@ -22,7 +22,6 @@ var createQuestionEl = function(questionTxtContent) {
     var question = document.createElement("h1");
     question.className = "page-title";
     question.textContent = questionTxtContent;
-    console.log(question);
     document.querySelector(".main-form").appendChild(question);
 }
 
@@ -51,10 +50,10 @@ var startQuiz = function() {
     createBtnEl(myQuestions[x].c);
 
     // get selected answer
-    // answerBtnEl.addEventListener("click", function() {
-    //     var selectedAnswer = answerBtnEl.textContent;
-    //     console.log(selectedAnswer);
-    // });
+    answerBtnEl.addEventListener("click", function(event) {
+        var selectedAnswer = event.textContent;
+        console.log(selectedAnswer);
+    });
 
     // compare selected answer with correct answer
 
