@@ -27,6 +27,7 @@ var createBtnEl = function(btnTxtContent) {
         if (selectedAnswer === myQuestions[x].correctAnswer) {
             alert("Your answer is correct!");
             x = x + 1;
+            score = score + 10;
             startQuiz();
         } else {
             alert("Your answer is incorrect.");
@@ -44,9 +45,9 @@ var startQuiz = function() {
     document.querySelector(".main-form").innerHTML = "";
 
     if (x === myQuestions.length || timer === 0) {
-        alert("This is the end of the quiz.")
+        alert("This is the end of the quiz.");
+        saveScore();
         window.location.href = "highscores.html";
-
     } else {
         // write question
         createQuestionEl(myQuestions[x].question);
@@ -65,10 +66,16 @@ var timer = function() {
         if (sec < 0) {
             clearInterval(timer);
             alert("You are out of time.");
+            saveScore();
             window.location.href = "highscores.html";
         }
     }, 1000);
 };
+
+var saveScore = function() {
+    initials = prompt("Enter your initials.");
+    localStorage.setItem(initials, score);
+}
 
 btnEl.addEventListener("click", function(){
     startQuiz();
