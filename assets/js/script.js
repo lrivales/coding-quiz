@@ -2,6 +2,8 @@ var btnEl = document.querySelector(".btn");
 var x = 0;
 var sec = 20;
 var score = 0;
+var playerArray = [];
+var playerInfo = {};
 
 var createQuestionEl = function(questionTxtContent) {
     // create new h1 element
@@ -74,7 +76,9 @@ var timer = function() {
 
 var saveScore = function() {
     initials = prompt("Enter your initials.");
-    localStorage.setItem(initials, score);
+    playerInfo = {"initials": initials, "score": score};
+    playerArray.push(playerInfo);
+    localStorage.setItem("player", JSON.stringify(playerArray));
 }
 
 btnEl.addEventListener("click", function(){

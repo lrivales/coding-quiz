@@ -1,17 +1,17 @@
-var retrieveScores = JSON.stringify(localStorage);
-console.log(retrieveScores);
+var retrievePlayerInfo = localStorage.getItem("player");
+console.log(retrievePlayerInfo);
 
-var playerScores = JSON.parse(retrieveScores);
-console.log(playerScores.length);
+var player = JSON.parse(retrievePlayerInfo);
+console.log(player.length);
 
-// var playerScores = function () {
-//         for (var i = 0; i < playerScores.length; i++) {
-//             var players = document.createElement("h1");
-//             players.className = "page-title";
-//             players.textContent = playerScores[i].textContent;
-//             console.log(players);
-//             document.querySelector(".main-form").append(players);
-//         }
-//     };
+var playerScore = function () {
+        for (var i = 0; i < player.length; i++) {
+            var playerInfo = document.createElement("h1");
+            playerInfo.className = "page-title";
+            playerInfo.textContent = player[i].initials + ": " + player[i].score;
+            console.log(playerInfo);
+            document.querySelector(".main-form").append(playerInfo);
+        }
+    };
 
-// playerScores();
+playerScore();
