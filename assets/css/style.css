@@ -27,7 +27,7 @@ header {
     border-bottom: 5px solid var(--primary);
 }
   
-header p {
+header p, a {
     color: var(--tertiary);
     margin: 5px 0 20px;
     font-size: 2rem;

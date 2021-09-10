@@ -1,22 +1,7 @@
 var btnEl = document.querySelector(".btn");
 var x = 0;
-
-var myQuestions = [
-    {
-        question: "1+1",
-        a: "2",
-        b: "1",
-        c: "3",
-        correctAnswer: "2"
-    },
-    {
-        question: "2+2",
-        a: "3",
-        b: "4",
-        c: "6",
-        correctAnswer: "4"
-    }
-];
+var sec = 20;
+var score = 0;
 
 var createQuestionEl = function(questionTxtContent) {
     // create new h1 element
@@ -46,6 +31,7 @@ var createBtnEl = function(btnTxtContent) {
         } else {
             alert("Your answer is incorrect.");
             x = x + 1;
+            sec = sec - 3;
             startQuiz();
         }
     });
@@ -57,9 +43,9 @@ var startQuiz = function() {
     document.querySelector(".page-title").remove();
     document.querySelector(".main-form").innerHTML = "";
 
-    if (x === myQuestions.length) {
+    if (x === myQuestions.length || timer === 0) {
         alert("This is the end of the quiz.")
-        // display high score
+        window.location.href = "highscores.html";
 
     } else {
         // write question
@@ -70,8 +56,21 @@ var startQuiz = function() {
         createBtnEl(myQuestions[x].b);
         createBtnEl(myQuestions[x].c);
     };
-
-    // display the score and the highest score
 };
 
-btnEl.addEventListener("click", startQuiz);
+var timer = function() {
+    var timer = setInterval(function() {
+        document.querySelector("#timer").innerHTML = "Time Remaining: " + sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+            alert("You are out of time.");
+            window.location.href = "highscores.html";
+        }
+    }, 1000);
+};
+
+btnEl.addEventListener("click", function(){
+    startQuiz();
+    timer();
+});
